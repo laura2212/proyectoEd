@@ -1,28 +1,31 @@
 package electrodomesticos;
 
-public class Heladera {
-	//Atributos
+public class Heladera extends Electrodomestico {
+	    //Atributos
 		private String Tiporefrigerador;
 		private double Capacidad;
-		protected double precioFinal;
 		
 	    //Constructor con valores por defecto:
 		public Heladera(){
-			this.Tiporefrigerador = "Cogelador";
+			super();
+			this.Tiporefrigerador = "Congelador";
 			this.Capacidad = 40;
 		}
 		
 	    //Constructor especifico
 
-		public Heladera(double precio,String color,char consumo,double peso,String tiporefrigerador, double capacidad){
+		public Heladera(int base,String color,char consumoEnergetico,double peso,String tiporefrigerador, double capacidad){
+			super(base,color,consumoEnergetico,peso);
 			this.Tiporefrigerador = tiporefrigerador;
 			this.Capacidad = capacidad;
 		}
 		
+		//getters y setters para atributos de heladera.
 
 		public String getTiporefrigerador() {
 			return Tiporefrigerador;
 		}
+		
 		public void setTiporefrigerador(String tiporefrigerador) {
 			Tiporefrigerador = tiporefrigerador;
 		}
@@ -31,13 +34,13 @@ public class Heladera {
 			return Capacidad;
 		}
 
-		public void setCapacidad(Double capacidad) {
+		public void setCapacidad(double capacidad) {
 			Capacidad = capacidad;
 		}
 		
 		
-		 public double precioFinal(){
-			 double precio=0;
+		 public double getPrecioFinal(){
+			 double precio=super.getPrecioFinal();
 	         if (this.Capacidad > 50)
 	         {
 	             switch (this.Tiporefrigerador)
@@ -45,7 +48,7 @@ public class Heladera {
 	                 case "Congelador":
 	                     precio = precio + 100; 
 	                     break;
-	                 case "Frigorífico":
+	                 case "Frigorifico":
 	                     precio = precio + 60;
 	                     break;
 	             }
@@ -53,14 +56,14 @@ public class Heladera {
 	         return precio;
 	     }
 		 
-		 public String toString()
+		 
+		 public String mostrarAtributos()
 	     {
-	         String result = "";
-	         result += "\n" + Tiporefrigerador ;
-	         result += "\n" + Capacidad + "\n.";
+	         String result = "Atributos de Heladera:"+"     "+
+	                         super.mostrarAtributos()+"     "+
+	                         "Tipo: "+Tiporefrigerador+"     "+
+	                         "Capacidad:  "+ Capacidad+"lts        "+
+	                         "Precio Final: $"+getPrecioFinal();
 	         return result;
 	     }
-
-		
-
 }

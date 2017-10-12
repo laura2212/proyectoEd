@@ -3,7 +3,7 @@ package electrodomesticos;
 public  class Electrodomestico {
 	
 	//Atributos.
-	private double base;
+	private int base;
     private String color;
     private char consumoEnergetico;
     private double peso;
@@ -11,14 +11,14 @@ public  class Electrodomestico {
     
     //Constructor con valores por defecto:
     public Electrodomestico(){
-  	  this.base=0d;
+  	  this.base=0;
   	  this.color="Blanco";
   	  this.consumoEnergetico='F';
   	  this.peso=5d;
     }
     //Constructor especializado :
 
-    public Electrodomestico(double base,String color,char consumoEnergetico,double peso){
+    public Electrodomestico(int base,String color,char consumoEnergetico,double peso){
   	  this.base=validarBase(base);
   	  this.color=validarColor(color);
   	  this.consumoEnergetico=validarConsumo(consumoEnergetico);
@@ -27,10 +27,10 @@ public  class Electrodomestico {
     
     //Metodos que permiten acceder a los campos:
     
-    public void setBase(double base){
+    public void setBase(int base){
   	 this.base=validarBase(base); 
     }
-    public double getBase(){
+    public int getBase(){
   	return this.base;  
     }
     
@@ -58,10 +58,10 @@ public  class Electrodomestico {
     
     public String mostrarAtributos(){
   	 String mostrar="";
-  	 mostrar=("Pecio base :"+getBase()+"     "+ 
+  	 mostrar=("Precio base : $"+getBase()+"     "+ 
   	          "Color: "+getColor()+"     "+ 
   	          "Consumo energetico: "+getConsumoEnergetico()+"   "+
-  	          "Peso: "+getPeso()+"  ");
+  	          "Peso: "+getPeso()+"kg    ");
        return mostrar;
     }
     
@@ -116,8 +116,8 @@ public  class Electrodomestico {
 		return peso; 
 	}
     
-    private double validarBase(double base) {
-  		double defecto=0d;
+    private int validarBase(int base) {
+  		int defecto=0;
   		
   		if (base<0) {
   			return defecto;
@@ -161,7 +161,7 @@ public  class Electrodomestico {
 			this.precioFinal+=50d;
 		}
 		if (this.peso>=50 & this.peso<=79) {
-			this.precioFinal+=50d;
+			this.precioFinal+=80d;
 		}
 		if (this.peso>=80 ) {
 			this.precioFinal+=100d;
